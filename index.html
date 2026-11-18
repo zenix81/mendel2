@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>멘델의 유전과 사람 유전 숨은 그림 찾기 O,X 퀴즈</title>
+<style>
+:root{--bg:#f3f8f3;--cd:#fff;--tx:#1b2633;--mu:#5a6a7b;--pr:#2f8a4b;--ok:#18975a;--no:#d4433b;--ln:#d3dfd6;--sf:#e6f4e9;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1712;--cd:#17221b;--tx:#e8f0ea;--mu:#9bb0a0;--pr:#5fcf80;--ok:#44c98b;--no:#ff7d74;--ln:#2b3d31;--sf:#1d3325}}
+:root[data-theme="dark"]{--bg:#0f1712;--cd:#17221b;--tx:#e8f0ea;--mu:#9bb0a0;--pr:#5fcf80;--ok:#44c98b;--no:#ff7d74;--ln:#2b3d31;--sf:#1d3325}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 "Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--cd);z-index:10}
+main{max-width:720px;margin:auto;padding:16px}
+section{background:var(--cd);border:1px solid var(--ln);border-radius:16px;padding:18px;margin-bottom:14px}
+h1{font-size:1.4rem;margin:.2em 0}h3{margin:.2em 0}
+.tag{color:var(--pr);font-weight:700;font-size:.9rem}
+.box{background:var(--sf);border-radius:12px;padding:10px 14px;margin:10px 0}
+.lg{display:flex;gap:10px;flex-wrap:wrap;font-weight:600;font-size:.92rem}
+.lg i{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:-2px;margin-right:4px;border:1px solid var(--ln)}
+#grid{display:grid;grid-template-columns:repeat(24,1fr);gap:1px;max-width:600px;margin:10px auto;background:var(--ln);border:1px solid var(--ln)}
+#grid div{aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:var(--cd);font-size:clamp(6px,1.55vw,10px);color:var(--mu)}
+#grid .k{background:#2e2e2e;color:#fff}#grid .g{background:#f59a3d;color:#222}#grid .p{background:#f48fb1;color:#222}#grid .y{background:#f7c92e;color:#222}#grid .r{background:#a8663a;color:#fff}
+.q{border:1px solid var(--ln);border-radius:12px;padding:10px 12px;margin:10px 0}
+.q.ok{border-color:var(--ok)}.q.bad{border-color:var(--no)}
+.q p{margin:0 0 8px}
+.n{display:inline-block;min-width:1.7em;text-align:center;border-radius:50%;background:var(--sf);font-weight:700;margin-right:6px}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.b{font:inherit;font-weight:700;padding:6px 22px;border:2px solid var(--ln);border-radius:10px;background:var(--cd);color:var(--tx);cursor:pointer}
+.b.sel{background:var(--pr);border-color:var(--pr);color:#fff}
+:root:not([data-theme="light"]) .b.sel{color:#08200f}
+.go{display:block;width:100%;padding:12px;font:inherit;font-weight:700;border:0;border-radius:10px;background:var(--pr);color:#fff;cursor:pointer;margin-bottom:14px}
+:root:not([data-theme="light"]) .go{color:#08200f}
+.fb{font-weight:600;margin-top:6px;min-height:1em}
+.fb.ok{color:var(--ok)}.fb.no{color:var(--no)}
+#res{font-weight:700;text-align:center;margin:10px 0}
+input{font:inherit;padding:8px 10px;border:2px solid var(--ln);border-radius:10px;background:var(--bg);color:var(--tx);min-width:0;width:180px}
+input:disabled,.b:disabled{opacity:.5}
+</style></head>
+<body>
+<main>
+<section>
+<div class="tag">생식과 유전 · 멘델의 유전과 사람의 유전</div>
+<h1>숨은 그림 찾기 O,X 퀴즈</h1>
+<div class="box">☺ 아래 그림판에 귀여운 동물이 숨어 있어요. 문제를 읽고 맞으면 <b>O</b>, 틀리면 <b>X</b>를 눌러요. <b>O를 고른 문제의 번호 칸</b>만 색칠돼요!<br>그림이 이상하면 틀린 문제가 있다는 뜻이에요. 문제를 다 풀고 <b>[채점하기]</b>로 확인해요. 그림이 완성되면 <b>마지막 문제</b>가 열려요!</div>
+<div class="lg"><span><i style="background:#2e2e2e"></i>1~8번 O</span><span><i style="background:#f59a3d"></i>9~16번 O</span><span><i style="background:#f48fb1"></i>17~24번 O</span><span><i style="background:#f7c92e"></i>25~32번 O</span><span><i style="background:#a8663a"></i>33~40번 O</span></div>
+<div id="grid"></div>
+<div id="res"></div>
+</section>
+<section id="qs"></section>
+<button class="go" id="gr">채점하기</button>
+<section id="fin">
+<h3>🎨 마지막 문제</h3>
+<p>40문제를 모두 맞혀 그림을 완성하면 열려요. 완성한 그림은 어떤 동물일까요?</p>
+<div class="row"><input id="fi" autocomplete="off" disabled placeholder="동물 이름"><button class="b" id="fc" disabled>확인</button><button class="b" id="up">↑ 그림판 보기</button></div>
+<div class="fb" id="ff"></div>
+</section>
+</main>
+<script>
+const $=(s,e=document)=>e.querySelector(s);
+const Q=[
+['멘델은 완두를 이용해 유전 실험을 하였다.',1],
+['완두는 대립 형질이 뚜렷하고 한 세대가 짧아 유전 실험에 적합하다.',1],
+['순종의 대립 형질이 다른 두 개체를 교배하면 잡종 1대에서는 열성 형질이 나타난다.',0,'잡종 1대에는 우성 형질만 나타나요.'],
+['하나의 형질에 대해 서로 뚜렷하게 구별되는 형질을 대립 형질이라고 한다.',1],
+['잡종 1대에서 겉으로 드러나는 형질을 우성, 드러나지 않는 형질을 열성이라고 한다.',1],
+['표현형은 유전자 구성을 알파벳 기호로 나타낸 것이다.',0,'그건 유전자형이에요. 표현형은 겉으로 드러나는 형질이에요.'],
+['순종의 둥근 완두(RR)와 순종의 주름진 완두(rr)를 교배하면 잡종 1대는 모두 주름진 완두이다.',0,'잡종 1대(Rr)는 모두 둥근 완두예요. 둥근 모양이 우성이에요.'],
+['우열의 원리: 순종의 대립 형질이 다른 두 개체를 교배하면 잡종 1대에서 우성 형질만 나타난다.',1],
+['자가 수분은 같은 개체의 꽃가루가 암술에 붙는 현상이다.',1],
+['다른 개체의 꽃가루를 암술에 묻혀 주는 것을 자가 수분이라고 한다.',0,'다른 개체의 꽃가루가 붙는 것은 타가 수분이에요.'],
+['잡종 1대(Rr)를 자가 수분하면 잡종 2대에서 우성 : 열성이 약 3 : 1로 나타난다.',1],
+['잡종 2대에서는 열성 형질이 나타나지 않는다.',0,'숨어 있던 열성 형질이 약 1/4 나타나요.'],
+['잡종 1대(Rr)에서는 둥근 완두와 주름진 완두가 1 : 1로 나타난다.',0,'잡종 1대는 모두 둥근 완두예요.'],
+['분리의 법칙: 생식세포가 만들어질 때 대립유전자가 분리되어 서로 다른 생식세포로 들어간다.',1],
+['생식세포 하나에는 대립유전자가 쌍으로 모두 들어 있다.',0,'생식세포에는 대립유전자가 하나씩만 들어가요.'],
+['유전자형이 Rr인 개체는 R를 가진 생식세포와 r를 가진 생식세포를 만든다.',1],
+['RR, rr처럼 같은 대립유전자로 이루어진 개체를 순종이라고 한다.',1],
+['유전자형이 Rr인 개체는 순종이다.',0,'Rr처럼 서로 다른 대립유전자를 가진 개체는 잡종이에요.'],
+['잡종 2대의 둥근 완두는 유전자형이 모두 RR이다.',0,'둥근 완두에는 RR과 Rr가 1 : 2로 섞여 있어요.'],
+['잡종 2대의 유전자형 비는 RR : Rr : rr = 1 : 2 : 1이다.',1],
+['사람은 한 세대가 길고 자손의 수가 적어 멘델처럼 교배 실험으로 유전을 연구하기 어렵다.',1],
+['사람의 유전 연구 방법에는 가계도 조사, 쌍둥이 연구, 통계 조사 등이 있다.',1],
+['가계도는 가족 구성원의 특정 형질이 유전되는 모습을 기호로 나타낸 도표이다.',1],
+['가계도에서 □는 여자, ○는 남자를 나타낸다.',0,'□는 남자, ○는 여자예요.'],
+['귓불 모양, 혀 말기, 미맹은 상염색체에 의해 유전되는 형질이다.',1],
+['사람의 체세포에는 상염색체가 22쌍, 성염색체가 1쌍 들어 있다.',1],
+['사람의 성염색체는 남자가 XX, 여자가 XY이다.',0,'남자는 XY, 여자는 XX예요.'],
+['일란성 쌍둥이는 유전자 구성이 거의 같아 환경이 형질에 미치는 영향을 알아보는 데 이용된다.',1],
+['이란성 쌍둥이는 하나의 수정란이 둘로 나뉘어 발생하므로 유전자 구성이 같다.',0,'하나의 수정란이 나뉜 것은 일란성이에요. 이란성은 서로 다른 수정란에서 생겨요.'],
+['가계도에서 부모가 모두 같은 형질인데 자녀에게 부모와 다른 형질이 나타나면, 부모의 형질이 우성이다.',1],
+['ABO식 혈액형은 대립유전자 A, B, O 세 가지에 의해 결정된다.',1],
+['ABO식 혈액형에서 A와 B는 O에 대해 우성이다.',1],
+['혈액형이 O형인 사람의 유전자형은 AO이다.',0,'O형의 유전자형은 OO예요. AO는 A형이에요.'],
+['혈액형이 AB형인 사람은 A와 B 형질이 모두 나타난다.',1],
+['부모가 모두 A형(유전자형 AO)이면 자녀는 O형이 태어날 수 없다.',0,'AO × AO에서는 자녀가 OO(O형)일 수 있어요.'],
+['적록 색맹 유전자는 성염색체인 X 염색체에 있다.',1],
+['적록 색맹은 여자보다 남자에게 더 많이 나타난다.',1],
+['적록 색맹인 아버지에게서 태어난 아들은 반드시 적록 색맹이다.',0,'아들은 아버지에게서 Y 염색체를 받으므로 아버지의 X 염색체에 있는 색맹 유전자를 받지 않아요.'],
+['키나 피부색처럼 여러 쌍의 유전자가 관여하는 형질을 다인자 유전이라고 한다.',1],
+['유전자의 변화로 생긴 돌연변이는 모두 자손에게 유전된다.',0,'생식세포에 생긴 돌연변이만 자손에게 유전돼요.']];
+const PIC=['....KK......','...KGGK.....','..KGPPGK....','..KGPPPGKKKK','.KGGPPPGGGGR','.KGGGGGGRGRG','.KGGGGGGGGGG','.KGGGGKKKGGG','.KRGGGYKYGGG','.KGGGGYKYGGG','.KRGGGYKYGGG','.KGGGGKKKGGG','.KGGGGGGGGGP','.KGPPGGG...K','.KGPPGGG.KK.','.KGGGGGG....','..KGGGGGGGGG','..KPPPPPPPPP','.KGGGGGGGGGY','.KGGGGGGGGGY','.KGGGGGGGG..','.KGGGKGGGK..','.KKKKKKKKKK.'].map(h=>h+[...h].reverse().join(''));
+const N=Q.length,cls=n=>n<=8?'k':n<=16?'g':n<=24?'p':n<=32?'y':'r';
+const PL={K:[],G:[],P:[],Y:[],R:[],'.':[]};
+Q.forEach(([t,a],i)=>{const n=i+1;(a?PL[{k:'K',g:'G',p:'P',y:'Y',r:'R'}[cls(n)]]:PL['.']).push(n)});
+let seed=11;const rnd=()=>(seed=seed*16807%2147483647)/2147483647;
+const shuf=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(rnd()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const bag={},take=c=>{if(!bag[c]||!bag[c].length)bag[c]=shuf(PL[c]);return bag[c].pop()};
+const ans=Array(N+1).fill(null),cells=[];let tries=0;
+PIC.forEach(r=>[...r].forEach(c=>{const n=take(c),d=document.createElement('div');d.textContent=n;d.dataset.n=n;$('#grid').append(d);cells.push(d)}));
+const paint=()=>cells.forEach(d=>{const n=+d.dataset.n;d.className=ans[n]===1?cls(n):''});
+const lock=()=>{$('#fi').disabled=$('#fc').disabled=true};
+Q.forEach(([t],i)=>{const n=i+1,d=document.createElement('div');d.className='q';d.id='q'+n;
+ d.innerHTML=`<p><span class="n">${n}</span>${t}</p><div class="row"><button class="b">O</button><button class="b">X</button></div><div class="fb"></div>`;
+ const [bo,bx]=d.querySelectorAll('button');
+ const pick=v=>{ans[n]=v;bo.classList.toggle('sel',v===1);bx.classList.toggle('sel',v===0);d.className='q';$('.fb',d).textContent='';paint();$('#res').textContent='';lock()};
+ bo.onclick=()=>pick(1);bx.onclick=()=>pick(0);$('#qs').append(d)});
+$('#gr').onclick=()=>{tries++;let ok=0;
+ Q.forEach(([t,a,c],i)=>{const n=i+1,d=$('#q'+n),f=$('.fb',d);
+  if(ans[n]===null){d.className='q bad';f.className='fb no';f.textContent='아직 답하지 않았어요.';return}
+  if(ans[n]===a){ok++;d.className='q ok';f.className='fb ok';f.textContent=a?'✅ 정답!':'✅ 정답! '+c}
+  else{d.className='q bad';f.className='fb no';f.textContent='❌ 다시 생각해봐요. 그림판에서 이 번호의 색칠을 확인해 보세요.'}});
+ if(ok==N){$('#res').textContent=`🎉 숨은 그림 완성! (${tries}번 만에) 맨 아래 마지막 문제를 풀어 보세요.`;$('#fi').disabled=$('#fc').disabled=false;$('#fin').scrollIntoView({behavior:'smooth'})}
+ else{$('#res').textContent=`${ok} / ${N} 정답 · 빨간 문제를 다시 생각해 봐요. (채점 ${tries}회)`;lock();scrollTo({top:0,behavior:'smooth'})}};
+$('#up').onclick=()=>scrollTo({top:0,behavior:'smooth'});
+const chk=()=>{const v=$('#fi').value.replace(/\s/g,'');if(!v)return;const f=$('#ff');
+ if(['고양이','고양','냥이','야옳이','치즈냥'].includes(v)){f.className='fb ok';f.textContent='🎉 정답! 방울 목걸이를 한 귀여운 고양이예요! 🐱'}
+ else{f.className='fb no';f.textContent='💡 다시 생각해봐요. “야옹~” 하고 우는 동물이에요.'}};
+$('#fc').onclick=chk;$('#fi').onkeydown=e=>{if(e.key==='Enter')chk()};
+</script></body></html>
